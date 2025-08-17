@@ -1,0 +1,21 @@
+.PHONY: all clean cleanall
+
+CF=ftn77
+LF=slink
+FFLAGS=/ERROR_NUMBERS
+RM=DEL /Y /Q
+TARGETS= fintern.exe
+
+all: $(TARGETS)
+
+fintern.obj: fintern.f
+	$(CF) $(FFLAGS) $<
+
+fintern.exe: fintern.obj
+	$(LF) $<
+
+
+clean:
+	cmd /C "$(RM)  fintern.obj fintern.exe"
+#	cmd /C "$(RM) sum1.obj sumf.obj inpdat.obj *.lis"
+cleanall: clean
